@@ -34,7 +34,7 @@ public class Main {
     public void clear()
     {
         for(int i = 0; i <= array.length; i++)
-            top--;
+            pop();
         System.out.println("Array vacío");
     }
 
