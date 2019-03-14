@@ -7,28 +7,28 @@ public class UnaryMinusNode extends ExpNode {
     UnaryMinusNode (ExpNode operand){
         this.operand = operand;
     }
-        @Override
+        //@Override
         double value(double xValue) {
         double neg = operand.value(xValue);
             return -neg;
         }
 
-        @Override
+        //@Override
         void printStackCommands() {
             operand.printStackCommands();
             System.out.println("Unary minus");
 
         }
 
-        @Override
+        //@Override
         void printInfix() {
-            System.out.println("(-");
+            System.out.print("(-");
             operand.printInfix();
-            System.out.println(')');
+            System.out.print(')');
 
         }
 
-        @Override
+        //@Override
         ExpNode derivative() {
             return new UnaryMinusNode(operand.derivative());
         }

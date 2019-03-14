@@ -5,13 +5,14 @@ public class BinOpNode extends ExpNode {
     char op; //Operador
     ExpNode left; // Expresión para la operación izquierda
     ExpNode right; //Expresión para la operación derecha
+    //int uno = 1;
 
     BinOpNode(char op, ExpNode left, ExpNode right){
         this.op = op;
         this.left = left;
         this.right = right;
     }
-        @Override
+        //@Override
         double value(double xValue) {
             double x = left.value(xValue);
             double y = right.value(xValue);
@@ -25,7 +26,7 @@ public class BinOpNode extends ExpNode {
             //return 0;
         }
 
-        @Override
+        //@Override
         void printStackCommands() {
             left.printStackCommands();
             right.printStackCommands();
@@ -33,16 +34,16 @@ public class BinOpNode extends ExpNode {
 
         }
 
-        @Override
+        //@Override
         void printInfix() {
-            System.out.println('(');
+            System.out.print('(');
             left.printInfix();
-            System.out.println(" " + op + " ");
+            System.out.print(" " + op + " ");
             right.printInfix();
-            System.out.println(')');
+            System.out.print(')');
         }
 
-        @Override
+        //@Override
         ExpNode derivative() {
             switch (op){
                 case '+':
@@ -53,6 +54,11 @@ public class BinOpNode extends ExpNode {
                     return new BinOpNode('+', new BinOpNode('*', left, right.derivative()), new BinOpNode('*', right,left.derivative()));
                 case '/':
                     return new BinOpNode('/', new BinOpNode('-', new BinOpNode('*', right, left.derivative()), new BinOpNode('*', left, right.derivative())),new BinOpNode('*', right, right));
+                case '^':
+                    //if()
+                    return new BinOpNode('^', new BinOpNode('*', right, left), new BinOpNode('-', right, new VariableNode().derivative() ));
+                //case 'e':
+                    //return new BinOpNode('e', new BinOpNode('^', left, right), new BinOpNode('-', right, new VariableNode().derivative()));
                     default: return null;
             }
 

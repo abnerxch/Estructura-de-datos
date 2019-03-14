@@ -3,22 +3,22 @@ package com.company;
  class VariableNode extends ExpNode {
 
      //ExpNode expNode = new ExpNode() {
-         @Override
+         //@Override
          double value(double xValue) {
              return xValue;
          }
 
-         @Override
+         //@Override
          void printStackCommands() {
              System.out.println("Push X");
          }
 
-         @Override
+         //@Override
          void printInfix() {
-             System.out.println("x");
+             System.out.print("x");
          }
 
-         @Override
+         //@Override
          ExpNode derivative() {
              return new ConstNode(1);
          }

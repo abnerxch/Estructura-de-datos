@@ -6,23 +6,23 @@ class ConstNode extends ExpNode{
         number = val;
     }
     //ExpNode expNode2 = new ExpNode() {
-        @Override
+        //@Override
         double value(double xValue) {
             return number;
         }
 
-        @Override
+        //@Override
         void printStackCommands() {
             System.out.println("Push " + number);
         }
 
-        @Override
+        //@Override
         void printInfix() {
-            System.out.println(number);
+            System.out.print(number);
 
         }
 
-        @Override
+        //@Override
         ExpNode derivative() {
             return new ConstNode(0);
         }

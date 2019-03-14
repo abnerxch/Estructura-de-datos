@@ -6,4 +6,5 @@ abstract class ExpNode {
     abstract void printStackCommands();
     abstract  void printInfix();
     abstract ExpNode derivative();
+    //abstract void uno();
 }

@@ -30,7 +30,8 @@ public class Main {
                 ExpNode deriv = exp.derivative();
                 CustomV1.TextIO.getln();
                 deriv.printStackCommands();
-                CustomV1.TextIO.putln("\nUna versión completa de la derivada es: ");
+                CustomV1.TextIO.put("\nUna versión completa de la derivada es: ");
+                System.out.print("");
                 CustomV1.TextIO.put(" ");
                 deriv.printInfix();
                 CustomV1.TextIO.putln();
@@ -41,7 +42,7 @@ public class Main {
             }
         }
 
-        System.out.println("Realizado");
+        System.out.println("Calculadora apagada");
     }
 
     static void skipBlanks(){
@@ -77,7 +78,7 @@ public class Main {
         ExpNode term;
         term = factorTree();
         skipBlanks();
-        while (CustomV1.TextIO.peek() == '*' || CustomV1.TextIO.peek() == '/'){
+        while (CustomV1.TextIO.peek() == '*' || CustomV1.TextIO.peek() == '/' || CustomV1.TextIO.peek() == '^' ){
             char op = CustomV1.TextIO.getAnyChar();
             ExpNode nextFactor = factorTree();
             term = new BinOpNode(op, term, nextFactor);
@@ -98,6 +99,11 @@ public class Main {
             return new VariableNode();
         }
 
+        else if(ch == 'e' || ch == 'E'){
+            CustomV1.TextIO.getAnyChar();
+            return new EulerNode();
+        }
+
         else if (ch == '('){
             CustomV1.TextIO.getAnyChar();
             ExpNode exp = expressionTree();
@@ -115,6 +121,6 @@ public class Main {
         else if(ch == '+' || ch == '-' || ch == '*' || ch == '/')
             throw new ParseError("Operador fuera de lugar");
         else
-            throw new ParseError("Carácter inesperado\"" + ch + "\" encontrado");
+            throw new ParseError("Carácter inesperado \"" + ch + "\" encontrado");
     }
 }
