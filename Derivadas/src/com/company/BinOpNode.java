@@ -21,6 +21,7 @@ public class BinOpNode extends ExpNode {
                 case '-': return x - y;
                 case '*': return x * y;
                 case '/': return x / y;
+                //case '^': return x ^ y;
                 default: return Double.NaN;
             }
             //return 0;
