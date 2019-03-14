@@ -78,7 +78,7 @@ public class Main {
         ExpNode term;
         term = factorTree();
         skipBlanks();
-        while (CustomV1.TextIO.peek() == '*' || CustomV1.TextIO.peek() == '/' || CustomV1.TextIO.peek() == '^' ){
+        while (CustomV1.TextIO.peek() == '*' || CustomV1.TextIO.peek() == '/' || CustomV1.TextIO.peek() == '^' || CustomV1.TextIO.peek() == '>'){
             char op = CustomV1.TextIO.getAnyChar();
             ExpNode nextFactor = factorTree();
             term = new BinOpNode(op, term, nextFactor);

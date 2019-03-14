@@ -5,7 +5,7 @@ public class BinOpNode extends ExpNode {
     char op; //Operador
     ExpNode left; // Expresión para la operación izquierda
     ExpNode right; //Expresión para la operación derecha
-    //int uno = 1;
+    char uno = '1';
 
     BinOpNode(char op, ExpNode left, ExpNode right){
         this.op = op;
@@ -56,11 +56,15 @@ public class BinOpNode extends ExpNode {
                 case '/':
                     return new BinOpNode('/', new BinOpNode('-', new BinOpNode('*', right, left.derivative()), new BinOpNode('*', left, right.derivative())),new BinOpNode('*', right, right));
                 case '^':
-                    //if()
-                    return new BinOpNode('^', new BinOpNode('*', right, left), new BinOpNode('-', right, new VariableNode().derivative() ));
-                //case 'e':
+                    //if(s) {
+                        //System.out.println(left.derivative() + " Yahoo ");
+                        return new BinOpNode('^', new BinOpNode('*', right, left), new BinOpNode('-', right, new VariableNode().derivative()));
+                    //}
+                        //case 'e':
                     //return new BinOpNode('e', new BinOpNode('^', left, right), new BinOpNode('-', right, new VariableNode().derivative()));
-                    default: return null;
+                case '>':
+                    return new BinOpNode('*', new BinOpNode('^', left, right), right.derivative());
+                default: return null;
             }
 
         }
