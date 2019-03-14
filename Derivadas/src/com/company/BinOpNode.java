@@ -58,7 +58,7 @@ public class BinOpNode extends ExpNode {
                 case '^':
                     //if(s) {
                         //System.out.println(left.derivative() + " Yahoo ");
-                        return new BinOpNode('^', new BinOpNode('*', right, left), new BinOpNode('-', right, new VariableNode().derivative()));
+                        return new BinOpNode('*', right, new BinOpNode('^', left, new BinOpNode('-', right, new VariableNode().derivative())));
                     //}
                         //case 'e':
                     //return new BinOpNode('e', new BinOpNode('^', left, right), new BinOpNode('-', right, new VariableNode().derivative()));
